@@ -25,4 +25,13 @@ describe 'Creating an issue' do
 
     expect(Issue.count).to eql(prev_count + 1)
   end
+
+  it 'does not add an issue when I specify invalid information' do
+    prev_count = Issue.count
+    visit new_issue_path
+    click_button 'Create Issue'
+
+    expect(page).to have_content("can't be blank")
+    expect(Issue.count).to eql(prev_count)
+  end
 end
