@@ -5,6 +5,8 @@ class Issue < ActiveRecord::Base
   belongs_to :category,
     inverse_of: :issues
 
+  validates_presence_of :title
+
   def self.categories
     [
       'Bug',

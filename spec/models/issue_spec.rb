@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Issue do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'validates presence of title' do
+    issue = Issue.new
+    expect(issue).to_not be_valid
+    expect(issue.errors["title"]).to_not be_blank
+  end
 end
